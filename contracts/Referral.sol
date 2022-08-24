@@ -1,11 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
 /// @title Marketing referral contract.
 /// @author @Mike_Bello90.
 /// @notice You can use this contract for a marketing referral strategy.
 /// @dev The wallet of the busines is set as owner of the contract in the constructor.
-contract Referral {
+/// @dev Contract Address: 0x243CF28dD239491B6EbB2278FF885fBA04e317d1
+contract Referral is ReentrancyGuard {
     /// @dev using constant to reduce gas cost.
     uint256 constant FEE_PER_USER = 0.25 ether;
     uint256 constant FEE_PER_LEVEL = 0.05 ether;
@@ -72,7 +75,7 @@ contract Referral {
     function LevelUp() public payable {
         require(msg.value == FEE_PER_LEVEL, "Fee Insuficiente");
         User storage user = wallet_to_User[msg.sender];
-        user.num_Referidos_PerLevel = 9; // usado solo para testear que el requiere que valida el nivel y el resto de la funcion trabaja correctamente.
+        // user.num_Referidos_PerLevel = 9; // usado solo para testear que el requiere que valida el nivel y el resto de la funcion trabaja correctamente.
         require(
             user.num_Referidos_PerLevel == MAX_REFERED_USERS_PER_LEVEL,
             "Aun hay Spots disponibles para tu actual nivel"
@@ -88,6 +91,18 @@ contract Referral {
         user.num_Referidos_PerLevel = 0;
         //emiting the event
         emit levelUp(user.name, msg.sender);
+    }
+
+    // Function to Withdraw the Fees
+    function withdrawFees() public nonReentrant {
+        require(
+            Fees_Balances_Per_Wallet[msg.sender] > 0,
+            "No tienes Fees Disponibles"
+        );
+
+        uint256 amount = Fees_Balances_Per_Wallet[msg.sender];
+        Fees_Balances_Per_Wallet[msg.sender] = 0;
+        payable(msg.sender).transfer(amount);
     }
 
     // Function to calulate and split the fees

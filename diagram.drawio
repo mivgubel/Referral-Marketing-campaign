@@ -134,10 +134,10 @@
                     <mxGeometry x="-40" y="1070" width="1440" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="_wV5sau5CZmFmBhhNpXO-0" value="Cobrar Fees (public) Reentrancy guard" style="swimlane;" parent="UxS5vO754omxInx-nRrO-1" vertex="1">
-                    <mxGeometry x="30" y="1600" width="447.5" height="160" as="geometry"/>
+                    <mxGeometry x="30" y="1600" width="447.5" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="_wV5sau5CZmFmBhhNpXO-1" value="Steps:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Validar que el usuario tiene balance disponible para retirar en el contrato.&lt;/li&gt;&lt;li&gt;Obtener el balance que el msg.sender tiene disponible en el mapping.&lt;/li&gt;&lt;li&gt;actualizar el mapping con su balance a 0.&lt;/li&gt;&lt;li&gt;transferir el balance disponible al usuario.&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="_wV5sau5CZmFmBhhNpXO-0" vertex="1">
-                    <mxGeometry x="7.5" y="40" width="440" height="120" as="geometry"/>
+                <mxCell id="_wV5sau5CZmFmBhhNpXO-1" value="Steps:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Validar que el usuario tiene balance disponible para retirar en el contrato,&lt;/li&gt;&lt;/ul&gt;&lt;span&gt;si no rechazar la Tx.&lt;/span&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Obtener el balance que el msg.sender tiene disponible en el mapping.&lt;/li&gt;&lt;li&gt;actualizar el mapping con su balance a 0.&lt;/li&gt;&lt;li&gt;transferir el balance disponible al usuario.&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="_wV5sau5CZmFmBhhNpXO-0" vertex="1">
+                    <mxGeometry x="3.75" y="25" width="440" height="160" as="geometry"/>
                 </mxCell>
                 <mxCell id="_wV5sau5CZmFmBhhNpXO-2" value="" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;align=center;verticalAlign=top;fillColor=#2D9C5E;shape=mxgraph.gcp2.check" parent="UxS5vO754omxInx-nRrO-1" vertex="1">
                     <mxGeometry x="170" y="1170" width="37.5" height="30" as="geometry"/>
@@ -147,6 +147,12 @@
                 </mxCell>
                 <mxCell id="ANnHJM-PV964MUTMgUKA-0" value="" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;align=center;verticalAlign=top;fillColor=#2D9C5E;shape=mxgraph.gcp2.check" vertex="1" parent="UxS5vO754omxInx-nRrO-1">
                     <mxGeometry x="730" y="1090" width="37.5" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="pLEf2TT-GDrUofcGTbVn-0" value="" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;align=center;verticalAlign=top;fillColor=#2D9C5E;shape=mxgraph.gcp2.check" vertex="1" parent="UxS5vO754omxInx-nRrO-1">
+                    <mxGeometry x="1220" y="1410" width="37.5" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="pLEf2TT-GDrUofcGTbVn-1" value="" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;align=center;verticalAlign=top;fillColor=#2D9C5E;shape=mxgraph.gcp2.check" vertex="1" parent="UxS5vO754omxInx-nRrO-1">
+                    <mxGeometry x="180" y="1565" width="37.5" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

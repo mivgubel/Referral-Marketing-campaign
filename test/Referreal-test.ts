@@ -1,5 +1,6 @@
 import { expect, use } from "chai";
 import { ethers } from "hardhat";
+import { features } from "process";
 import { Referral } from "../typechain-types";
 
 describe("Referral Contract", function () {
@@ -173,6 +174,29 @@ describe("Referral Contract", function () {
 			await expect(referralContract.connect(user2).LevelUp({ value: fee }))
 				.to.emit(referralContract, "levelUp")
 				.withArgs("User 2", user2.address);
+		});
+	});
+
+	// Testing withdrawFees Function
+	describe.only("Testing withdrawFees Function", function () {
+		it("Testing if the function revert if the user doesn't have fees in the contract", async function () {
+			await expect(referralContract.withdrawFees()).to.be.revertedWith("No tienes Fees Disponibles");
+		});
+
+		it("Testing the balance the user has before and after withdraw", async function () {
+			let fee = ethers.utils.parseUnits("0.25", "ether");
+			let feeExpected = ethers.utils.parseUnits("0.175", "ether");
+			let user1 = accounts[1];
+			let user2 = accounts[2];
+			let user3 = accounts[3];
+			await referralContract.connect(user1).RegisterUser("User 1", user1.address, { value: fee });
+			let feeReferidorBefore = await referralContract.Fees_Balances_Per_Wallet(user1.address);
+			expect(feeReferidorBefore).to.eq(feeExpected);
+
+			// revisamos que el balance de la wallet aumente con los fees que retira del contrato.
+			await expect(referralContract.connect(user1).withdrawFees()).to.changeEtherBalance(user1, feeReferidorBefore);
+			let feeReferidorAfter = await referralContract.Fees_Balances_Per_Wallet(user1.address);
+			expect(feeReferidorAfter).to.equal(0);
 		});
 	});
 
