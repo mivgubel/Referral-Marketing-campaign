@@ -1,13 +1,7 @@
-# Sample Hardhat Project
+# Referral Marketing Campaign.
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This is an Smart contract that I develop as a solution to a Technical challenge for a Job in a Defi Mexican Startup.
 
-Try running some of the following tasks:
+I get the requirements of the challenge and base on that requirements I design the architecture of the Project, the functions and functionality the smart contract should have and after that I started the development of the project.
 
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
-```
+To develop this project I used the TDD(Test Driven Development) methodology, I created the tests first and created the code need it to pass the tests in a Iterative way, I also developed the optimal code thinking in gas optimization and security.
